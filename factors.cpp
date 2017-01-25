@@ -1,4 +1,4 @@
-vector<int> Solution::allFactors(int A) 
+vector<int> allFactors(int A) 
 {
     int i;
     vector <int> ans;
