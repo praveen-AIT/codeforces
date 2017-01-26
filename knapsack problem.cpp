@@ -35,10 +35,11 @@ int dp_knapsack(int val[], int wt[], int n, int W)
     {
         for(j=1; j<=W; j++)
         {
-            if(wt[i] > j)
+            if(wt[i-1] > j)
                 dp[i][j] = dp[i-1][j];
             else
-                dp[i][j] = max(val[i] + dp[i-1][j-wt[i]], dp[i-1][j]);
+                dp[i][j] = max(val[i-1] + dp[i-1][j-wt[i-1]], 
+                               dp[i-1][j]);
         }
     }          
     return dp[n][W];
@@ -56,7 +57,7 @@ int main()
     for(i=0; i<n; i++)
         cin>>b[i];
 
-    int ans = dp_knapsack(a, b, n-1, W);
+    int ans = dp_knapsack(a, b, n, W);
     cout<<ans<<endl;
     return 0;
 }
